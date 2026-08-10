@@ -1,5 +1,5 @@
 <script setup>
-import JSONComponent from "./components/JSON.vue"
+import JSONComponent from "./components/LibraryRegistrationForm.vue"
 </script>
 
 <template>
