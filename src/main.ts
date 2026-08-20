@@ -1,11 +1,19 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-// Use Bootstrap CSS
+// Bootstrap CSS
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-// Do not use the previous CSS files for this activity
-// import './assets/main.css'
-// import './style.css'
+// PrimeVue
+import PrimeVue from 'primevue/config'
+import Aura from '@primevue/themes/aura'
 
-createApp(App).mount('#app')
+const app = createApp(App)
+
+app.use(PrimeVue, {
+  theme: {
+    preset: Aura
+  }
+})
+
+app.mount('#app')
