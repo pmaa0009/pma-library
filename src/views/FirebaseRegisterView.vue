@@ -140,6 +140,10 @@ const register = async () => {
               </button>
             </form>
 
+            <p class="text-center text-secondary mt-4 mb-0">
+              Already registered?
+              <RouterLink to="/firebase-signin">Sign in</RouterLink>
+            </p>
           </div>
         </div>
       </div>

@@ -31,6 +31,16 @@
             Register (Week 7)
           </RouterLink>
         </li>
+
+        <li class="nav-item">
+          <RouterLink
+            to="/firebase-signin"
+            class="nav-link"
+            active-class="active"
+          >
+            Sign in (Week 7)
+          </RouterLink>
+        </li>
       </ul>
     </header>
   </div>
