@@ -41,6 +41,16 @@
             Sign in (Week 7)
           </RouterLink>
         </li>
+
+        <li class="nav-item">
+          <RouterLink
+            to="/firebase-logout"
+            class="nav-link"
+            active-class="active"
+          >
+            Log out (Week 7)
+          </RouterLink>
+        </li>
       </ul>
     </header>
   </div>
