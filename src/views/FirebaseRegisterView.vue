@@ -2,6 +2,7 @@
 import { ref } from 'vue'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import { auth, isFirebaseConfigured } from '../firebase'
+import { getOrCreateUserProfile } from '../services/userProfile'
 
 const email = ref('')
 const password = ref('')
@@ -41,6 +42,17 @@ const register = async () => {
     )
 
     console.log('Registered user:', userCredential.user)
+
+    try {
+      const profile = await getOrCreateUserProfile(userCredential.user)
+      console.log('Assigned role:', profile.role)
+    } catch (profileError) {
+      console.error('Profile creation error:', profileError.code ?? profileError.message)
+      errorMessage.value =
+        'Your account was created, but the Member role could not be saved.'
+      return
+    }
+
     successMessage.value = `Account created successfully for ${userCredential.user.email}.`
     password.value = ''
     confirmPassword.value = ''

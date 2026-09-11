@@ -1,11 +1,14 @@
 <script setup>
-import { onUnmounted, ref } from 'vue'
+import { computed, onUnmounted, ref } from 'vue'
 import { onAuthStateChanged, signInWithEmailAndPassword } from 'firebase/auth'
 import { auth, isFirebaseConfigured } from '../firebase'
+import { getOrCreateUserProfile } from '../services/userProfile'
 
 const email = ref('')
 const password = ref('')
 const currentUser = ref(null)
+const currentRole = ref('')
+const roleErrorMessage = ref('')
 const errorMessage = ref('')
 const successMessage = ref('')
 const isSubmitting = ref(false)
@@ -24,10 +27,33 @@ const showCurrentUserInConsole = (user) => {
   )
 }
 
+const roleLabel = computed(() => {
+  if (currentRole.value === 'librarian') return 'Librarian'
+  if (currentRole.value === 'member') return 'Member'
+  return 'Loading…'
+})
+
+const loadCurrentUser = async (user) => {
+  currentUser.value = user
+  currentRole.value = ''
+  roleErrorMessage.value = ''
+  showCurrentUserInConsole(user)
+
+  if (!user) return
+
+  try {
+    const profile = await getOrCreateUserProfile(user)
+    currentRole.value = profile.role
+    console.log('Current role:', profile.role)
+  } catch (error) {
+    console.error('Role loading error:', error.code ?? error.message)
+    roleErrorMessage.value = 'Unable to load the role from Firestore.'
+  }
+}
+
 const stopAuthListener = auth
   ? onAuthStateChanged(auth, (user) => {
-      currentUser.value = user
-      showCurrentUserInConsole(user)
+      loadCurrentUser(user)
     })
   : null
 
@@ -51,8 +77,7 @@ const signIn = async () => {
       password.value
     )
 
-    currentUser.value = userCredential.user
-    showCurrentUserInConsole(userCredential.user)
+    await loadCurrentUser(userCredential.user)
     successMessage.value = `Signed in successfully as ${userCredential.user.email}.`
     password.value = ''
   } catch (error) {
@@ -82,8 +107,39 @@ const signIn = async () => {
               class="alert alert-info"
               role="status"
             >
-              <strong>Current Firebase user:</strong>
-              {{ currentUser.email }}
+              <div><strong>Current Firebase user:</strong> {{ currentUser.email }}</div>
+              <span
+                v-if="currentRole"
+                class="badge text-bg-primary mt-2"
+              >
+                Role: {{ roleLabel }}
+              </span>
+            </div>
+
+            <div
+              v-if="currentRole === 'member'"
+              class="alert alert-secondary"
+              role="status"
+            >
+              <strong>Member access</strong><br />
+              Browse the catalogue and view borrowing history.
+            </div>
+
+            <div
+              v-if="currentRole === 'librarian'"
+              class="alert alert-warning"
+              role="status"
+            >
+              <strong>Librarian access</strong><br />
+              Catalogue management and member administration are available.
+            </div>
+
+            <div
+              v-if="roleErrorMessage"
+              class="alert alert-danger"
+              role="alert"
+            >
+              {{ roleErrorMessage }}
             </div>
 
             <div
