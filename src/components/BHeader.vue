@@ -21,6 +21,16 @@
             About
           </RouterLink>
         </li>
+
+        <li class="nav-item">
+          <RouterLink
+            to="/firebase-register"
+            class="nav-link"
+            active-class="active"
+          >
+            Register (Week 7)
+          </RouterLink>
+        </li>
       </ul>
     </header>
   </div>
