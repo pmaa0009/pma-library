@@ -51,6 +51,16 @@
             Log out (Week 7)
           </RouterLink>
         </li>
+
+        <li class="nav-item">
+          <RouterLink
+            to="/addbook"
+            class="nav-link"
+            active-class="active"
+          >
+            Add Book (Week 8)
+          </RouterLink>
+        </li>
       </ul>
     </header>
   </div>

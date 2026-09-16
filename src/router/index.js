@@ -1,9 +1,14 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import {
+  createRouter,
+  createWebHistory
+} from 'vue-router'
+
 import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import FirebaseRegisterView from '../views/FirebaseRegisterView.vue'
 import FirebaseSigninView from '../views/FirebaseSigninView.vue'
 import FirebaseLogoutView from '../views/FirebaseLogoutView.vue'
+import AddBookView from '../views/AddBookView.vue'
 
 const routes = [
   {
@@ -30,11 +35,18 @@ const routes = [
     path: '/firebase-logout',
     name: 'FirebaseLogout',
     component: FirebaseLogoutView
+  },
+  {
+    path: '/addbook',
+    name: 'AddBook',
+    component: AddBookView
   }
 ]
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(
+    import.meta.env.BASE_URL
+  ),
   routes
 })
 
