@@ -71,6 +71,7 @@
         </form>
       </div>
     </div>
+    <BookList />
   </div>
 </template>
 
@@ -81,6 +82,7 @@ import {
   collection
 } from 'firebase/firestore'
 import { db } from '../firebase.js'
+import BookList from '../components/BookList.vue'
 
 const isbn = ref('')
 const name = ref('')
