@@ -29,7 +29,7 @@ const showCurrentUserInConsole = (user) => {
 
 const roleLabel = computed(() => {
   if (currentRole.value === 'librarian') return 'Librarian'
-  if (currentRole.value === 'member') return 'Member'
+  if (currentRole.value === 'customer') return 'customer'
   return 'Loading…'
 })
 
@@ -117,7 +117,7 @@ const signIn = async () => {
             </div>
 
             <div
-              v-if="currentRole === 'member'"
+              v-if="currentRole === 'customer'"
               class="alert alert-secondary"
               role="status"
             >

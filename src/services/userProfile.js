@@ -1,7 +1,7 @@
 import { doc, getDoc, serverTimestamp, setDoc } from 'firebase/firestore'
 import { db } from '../firebase'
 
-export const DEFAULT_ROLE = 'member'
+export const DEFAULT_ROLE = 'customer'
 
 export const getOrCreateUserProfile = async (user) => {
   if (!db || !user) {
