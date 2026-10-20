@@ -44,6 +44,16 @@
 
         <li class="nav-item">
           <RouterLink
+            to="/WeatherCheck"
+            class="nav-link"
+            active-class="active"
+          >
+            Get Weather
+          </RouterLink>
+        </li>
+
+        <li class="nav-item">
+          <RouterLink
             to="/firebase-logout"
             class="nav-link"
             active-class="active"

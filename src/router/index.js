@@ -9,6 +9,7 @@ import FirebaseRegisterView from '../views/FirebaseRegisterView.vue'
 import FirebaseSigninView from '../views/FirebaseSigninView.vue'
 import FirebaseLogoutView from '../views/FirebaseLogoutView.vue'
 import AddBookView from '../views/AddBookView.vue'
+import WeatherView from '../views/WeatherView.vue'
 
 const routes = [
   {
@@ -35,6 +36,11 @@ const routes = [
     path: '/firebase-logout',
     name: 'FirebaseLogout',
     component: FirebaseLogoutView
+  },
+  {
+    path: '/WeatherCheck',
+    name: 'GetWeather',
+    component: WeatherView
   },
   {
     path: '/addbook',
