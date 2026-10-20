@@ -168,7 +168,7 @@ const signIn = async () => {
 
             <form @submit.prevent="signIn">
               <div class="mb-3">
-                <label for="signin-email" class="form-label">Email address</label>
+                <label for="signin-email" class="form-label">Please Enter your Email address</label>
                 <input
                   id="signin-email"
                   v-model.trim="email"
