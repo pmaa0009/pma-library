@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <header class="d-flex justify-content-center py-3">
-      <ul class="nav nav-pills">
+      <ul class="nav nav-pills justify-content-center">
         <li class="nav-item">
           <RouterLink
             to="/"
@@ -49,6 +49,26 @@
             active-class="active"
           >
             Get Weather
+          </RouterLink>
+        </li>
+
+        <li class="nav-item">
+          <RouterLink
+            to="/getbookcount"
+            class="nav-link"
+            active-class="active"
+          >
+            Get Book Count
+          </RouterLink>
+        </li>
+
+         <li class="nav-item">
+          <RouterLink
+            to="/GetAllBookAPI"
+            class="nav-link"
+            active-class="active"
+          >
+            Get All BookAPI
           </RouterLink>
         </li>
 

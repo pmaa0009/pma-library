@@ -10,6 +10,8 @@ import FirebaseSigninView from '../views/FirebaseSigninView.vue'
 import FirebaseLogoutView from '../views/FirebaseLogoutView.vue'
 import AddBookView from '../views/AddBookView.vue'
 import WeatherView from '../views/WeatherView.vue'
+import GetBookCountView from '../views/GetBookCountView.vue'
+import GetAllBookAPIView from '../views/GetAllBookAPIView.vue'
 
 const routes = [
   {
@@ -43,10 +45,20 @@ const routes = [
     component: WeatherView
   },
   {
+    path: '/getbookcount',
+    name: 'GetBookCount',
+    component: GetBookCountView
+  },
+  {
     path: '/addbook',
     name: 'AddBook',
     component: AddBookView
-  }
+  },
+  {
+  path: '/GetAllBookAPI',
+  name: 'GetAllBookAPI',
+  component: GetAllBookAPIView
+}
 ]
 
 const router = createRouter({
